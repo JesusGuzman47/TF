@@ -58,15 +58,16 @@ public class Unit {
 	
 	public static int createUnit(kingdom kingdom1){
 		Display.unitDisplayPrompt(kingdom1);
-		int unit = 5; //engine.randomlyCreateUnitAmount();/// based upon amount of gold currently have 
-		//should be random also //when you click 5 you can only hope to get 5 units
-		// this is because you may be able to create or to not create because there are no units  to make create people
-		
+		int unit = engine.randomlyCreateUnitAmount(kingdom1);
+		// based upon amount of gold currently have 
+		//  should be random also //when you click 5 you can only hope to get 5 units
+		//  this is because you may be able to create or to not create because there are no units to make, create people
+		System.out.println("--->Inside Unit.createUnit()!");
 		System.out.println("You chose to create: " + unit + " units.");
 			if(kingdom1.raceName == "elves"){
-				kingdom1.kingdomResources.resourcesGold = (kingdom1.kingdomResources.resourcesGold - (2 * unit)); // 100 - ( 5 * 2)
-				kingdom1.kingdomResources.resourcesFood = (kingdom1.kingdomResources.resourcesFood - unit); // 50 - 5 
-				kingdom1.kingdomUnits.unitAmount = kingdom1.kingdomUnits.unitAmount + unit; 
+				kingdom1.kingdomResources.resourcesGold = (kingdom.getKingdomGold(kingdom1) - (2 * unit)); // 100 - ( 5 * 2)
+				kingdom1.kingdomResources.resourcesFood = (kingdom.getKingdomFood(kingdom1) - unit); // 50 - 5 
+				kingdom1.kingdomUnits.unitAmount = kingdom.getKingdomUnits(kingdom1)+ unit; 
 				int createdUnit = kingdom1.kingdomUnits.unitAmount; 
 				Display.displayUnitCreated(kingdom1.kingdomResources.resourcesGold, kingdom1.kingdomResources.resourcesFood, kingdom1.kingdomUnits.unitAmount);
 				return createdUnit;

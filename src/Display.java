@@ -34,6 +34,7 @@ public class Display {
 
 
 	public static void displayUnitCreated(int newGold, int food, int unitAmount) {
+		System.out.println("Inside Display.displayUnitCreated()");
 		System.out.println("new gold: " + newGold );
 		System.out.println("new food: " + food);
 		System.out.println("new unit amount: " + unitAmount);

@@ -6,13 +6,15 @@ public class Choice {
 	}
 
 	public static void battleOrCreateChoice(kingdom kingdom1){
-		String input = engine.randomChoice(); //randomize choice
+		String input = engine.randomChoice(); //randomize choice	
 		System.out.println("Inside battleOrCreate choice our value is --> " + input);
+		System.out.println("--->Inside Choice.battleOrCreateChoice()!");
 		if(input == "1"){
+			System.out.println("--->Inside Choice.battleOrCreateChoice() if statement");
 			Action.battle(kingdom1);
 		} else {
 			Action.create(kingdom1);
-			System.out.println("inside battleOrCreate choice!! not a valid entry!");
+			System.out.println("--->Inside Choice.battleOrCreateChoice() choice!! not a valid entry!");
 		}
 	}
 	

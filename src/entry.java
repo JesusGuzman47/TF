@@ -1,7 +1,10 @@
 
 public class entry {
 	public static void main(String[] args){
+		// opponent created based upon your stats. might win or lose.
+		
 		System.out.println("Can only choose elves.\n");
+		
 		String raceType = Choice.chooseRace();
 		String kingdomName = enterName();
 		//Attributes.startingRaceResources(raceType);

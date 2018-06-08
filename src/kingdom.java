@@ -17,21 +17,22 @@ public class kingdom {
 		this.workers = workers;
 	}
 	
-	
-	/*public int addToArmy(int army){
-		//newArmy = army + 1;
-		//return newArmy;
-	}*/
-	
-	public int addWorker(int worker){
-		workers = worker + 1;
-		return workers;
-	}
-	
-	
 	public String getKingdomName(){
 		return kingdomName;
 	}
+	
+	public static int getKingdomGold(kingdom kingdom1){
+		return kingdom1.kingdomResources.resourcesGold;
+	}
+	
+	public static int getKingdomFood(kingdom kingdom1){
+		return kingdom1.kingdomResources.resourcesFood;
+	}
+	
+	public static int getKingdomUnits(kingdom kingdom1){
+		return kingdom1.kingdomUnits.unitAmount;
+	}
+	
 	
 	public String getRace(){
 		return raceName;

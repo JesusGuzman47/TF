@@ -74,6 +74,19 @@ public class engine {
 			System.out.println("Choice came out to be ----> " + choice2 + "\n");
 			return choice2;
 		}
-		
 	}
+	
+	// 33% luck 66% skill
+	public static int randomlyCreateUnitAmount(kingdom kingdom1){ // not rando yet
+		int unit = 0;
+		System.out.println("--->Inside engine.randomlyCreateUnitAmount()!");
+		if((2 < kingdom.getKingdomGold(kingdom1)) && (1 < kingdom.getKingdomFood(kingdom1))){
+			 unit = (kingdom.getKingdomGold(kingdom1)/2);// 100/2 = 50				 
+		} else {
+			System.out.println("\nKingdom does not have enough + Resources + to create units.\n");
+		}
+		return unit;
+	}
+	
+
 }
