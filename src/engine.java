@@ -25,8 +25,7 @@ public class engine {
 	
 	// highest chance you can get is 33%
 	public static int getChance(kingdom kingdom1){
-		int level = kingdom1.getLevel(); 
-		System.out.println("kingdom level: " + kingdom1.kingdomLevel.newLevel + "\nkingdom exploration level: " + kingdom1.newExplorationLevel);
+		System.out.println("kingdom level: " + kingdom1.kingdomLevel.newLevel);
 		int currentChances = 0;
 		calculateChance(kingdom1.kingdomLevel.newLevel, kingdom1.kingdomLevel.newLevel);
 		
@@ -53,7 +52,7 @@ public class engine {
 		Random objGenerator = new Random();
 		int number = 0;
 		kingdom1.getLevel();
-		System.out.println("kingdom level: " + kingdom1.kingdomLevel.newLevel + "\nkingdom exploration level: " + kingdom1.newExplorationLevel);
+		System.out.println("kingdom level: " + kingdom1.kingdomLevel.newLevel);
 		for(int i = 0; i < number; i++){
 			int randomNumber = objGenerator.nextInt(100);
 			if(randomNumber < 33){ // 33 will be a variable

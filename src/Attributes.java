@@ -9,7 +9,30 @@ public class Attributes {
 	
 	//Attributes(int gold, int food, )
 	
-	static void elvenUnitAttributes(){
+	static void startingRaceAttributes(){
+		
+	}
+
+	public static Resources startingRaceResources(String raceType) {
+		if(raceType == "elves"){
+			Resources elvesResources = new Resources(100, 50);
+			return elvesResources;
+		} 
+		if(raceType == "dwarves"){
+			Resources dwarvesResources = new Resources(100, 50);
+			return dwarvesResources;
+		} 
+		if(raceType == "humans"){
+			Resources humansResources = new Resources(100, 50);
+			return humansResources;
+		} 
+		if(raceType == "orcs"){
+			Resources orcsResources = new Resources(100, 50);
+			return orcsResources;
+		} else { 
+			System.out.println("No race entered!");
+		}
+		return null;
 		
 	}
 }

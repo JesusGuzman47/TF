@@ -8,8 +8,9 @@ public class Display {
 	public static void displayKingdomStats(kingdom kingdom1){
 		System.out.println("Race name being called from another class: " + kingdom1.raceName 
 				+ "\nkingdome name: " + kingdom1.kingdomName 
-				+ "\nGold: " + kingdom1.newGold
-				+ "\nFood: " + kingdom1.food 
+				+ "\nResources: " 
+				+ "\n->Gold: " + kingdom1.kingdomResources.resourcesFood
+				+ "\n->Food: " + kingdom1.kingdomResources.resourcesGold
 				+ "\nArmy: " + kingdom1.kingdomUnits.unitAmount
 				+ "\nKingdom level: " + kingdom1.kingdomLevel.newLevel
 				+ "\nkingdom exploration level: " + kingdom1.kingdomLevel.newExplorationLevel

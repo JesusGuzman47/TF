@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Unit {
 	int unitLevel;
 	String unitRace;
@@ -60,14 +58,17 @@ public class Unit {
 	
 	public static int createUnit(kingdom kingdom1){
 		Display.unitDisplayPrompt(kingdom1);
-		int unit = 5;
+		int unit = 5; //engine.randomlyCreateUnitAmount();/// based upon amount of gold currently have 
+		//should be random also //when you click 5 you can only hope to get 5 units
+		// this is because you may be able to create or to not create because there are no units  to make create people
+		
 		System.out.println("You chose to create: " + unit + " units.");
 			if(kingdom1.raceName == "elves"){
-				kingdom1.newGold = (kingdom1.newGold - (2 * unit)); // 100 - ( 5 * 2)
-				kingdom1.food = (kingdom1.food - unit); // 50 - 5 
+				kingdom1.kingdomResources.resourcesGold = (kingdom1.kingdomResources.resourcesGold - (2 * unit)); // 100 - ( 5 * 2)
+				kingdom1.kingdomResources.resourcesFood = (kingdom1.kingdomResources.resourcesFood - unit); // 50 - 5 
 				kingdom1.kingdomUnits.unitAmount = kingdom1.kingdomUnits.unitAmount + unit; 
 				int createdUnit = kingdom1.kingdomUnits.unitAmount; 
-				Display.displayUnitCreated(kingdom1.newGold, kingdom1.food, kingdom1.kingdomUnits.unitAmount);
+				Display.displayUnitCreated(kingdom1.kingdomResources.resourcesGold, kingdom1.kingdomResources.resourcesFood, kingdom1.kingdomUnits.unitAmount);
 				return createdUnit;
 			} else {// still needs orcs, humans .. etc
 				return 0;

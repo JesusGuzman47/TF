@@ -3,29 +3,20 @@ public class kingdom {
 	
 	String raceName;
 	String kingdomName;
-	int newGold;
-	int food;
+	Resources kingdomResources;
 	Unit kingdomUnits;
 	Level kingdomLevel;
-	int newExplorationLevel;
 	int workers;
 	
-	public kingdom(String raceType, String kingdomName, int gold, int food, 
-			Unit unit, Level level, int workers){
+	public kingdom(String raceType, String kingdomName, Resources resources, Unit unit, Level level, int workers){
 		this.raceName = raceType;
 		this.kingdomName = kingdomName;
-		this.newGold = gold;
-		this.food = food;
 		this.kingdomUnits = unit;
 		this.kingdomLevel = level;
+		this.kingdomResources = resources;
 		this.workers = workers;
 	}
 	
-	public int buyUnit(int gold){
-		newGold = gold - 1;
-		System.out.println("gold: " + gold);
-		return newGold;
-	}
 	
 	/*public int addToArmy(int army){
 		//newArmy = army + 1;

@@ -1,10 +1,10 @@
 
-public class worker {
+public class Worker {
 	int workerLevel;
 	String workerRace;
 	String workerType;
 	
-	worker(String workerRace, int workerLevel, String type){
+	Worker(String workerRace, int workerLevel, String type){
 		this.workerLevel = workerLevel;
 		this.workerRace = workerRace;
 		this.workerType = type;
