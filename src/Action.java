@@ -14,7 +14,7 @@ public class Action {
 				System.out.println("--->Inside Action.battle() if statement return true to Action battleOpponent.");
 				
 			} else {
-				
+			
 			}
 		}
 	}

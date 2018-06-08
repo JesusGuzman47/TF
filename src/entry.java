@@ -23,11 +23,13 @@ public class entry {
 		System.out.println("You entered: " + inputName + "\n");
 		return inputName;
 		/*
+		 * 
 		 * if(inputName != null){
 			return inputName;
 		} else {
 			return "Some name"; // its dead but it wont be after i learn how to input things
 		}
+		*
 		*/
 	}
 	
