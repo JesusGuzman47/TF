@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class entry {
 	public static void main(String[] args){
-		System.out.println("Can only choose elves!!!");
+		System.out.println("Can only choose elves.\n");
 		String raceType = Choice.chooseRace();
 		String kingdomName = enterName();
 		int gold = 100;
