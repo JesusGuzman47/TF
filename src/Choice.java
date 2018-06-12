@@ -22,9 +22,10 @@ public class Choice {
 	
 	public static String chooseRace(){
 		Display.displayEnterRace();
-		Scanner in = new Scanner(System.in);
+		/*Scanner in = new Scanner(System.in);
 		int inputNum = in.nextInt();
-		in.close();
+		in.close();*/
+		int inputNum = Integer.parseInt(Input.input());
 		System.out.println("input number: " + inputNum);
 		
 		if(inputNum == 1){

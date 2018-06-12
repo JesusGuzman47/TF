@@ -58,7 +58,7 @@ public class Action {
 	public static kingdom CreateKingdom() {
 		// TODO Auto-generated method stub
 		String raceType = Choice.chooseRace();
-		String kingdomName = entry.enterName();
+		String kingdomName = kingdomEntry.enterName();
 		//Attributes.startingRaceResources(raceType);
 		Resources resources = Attributes.startingRaceResources(raceType); //haha
 		int workers = 1;

@@ -1,12 +1,12 @@
 
-public class entry {
+public class kingdomEntry {
 	public static void main(String[] args){
 		// opponent created based upon your stats. might win or lose.
 	}
 	
 	public static String enterName(){
 		System.out.println("Enter kingdom name");
-		String inputName = "Very lit kingdom ";
+		String inputName = Input.input();
 		System.out.println("You entered: " + inputName + "\n");
 		return inputName;
 		/*
