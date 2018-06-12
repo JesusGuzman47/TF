@@ -14,6 +14,10 @@ public class Level {
 		return newLevel;
 	}
 	
+	public int getUnitLevel(){
+		return newUnitLevel;
+	}
+	
 	public static void updateLevel(){
 		
 	}

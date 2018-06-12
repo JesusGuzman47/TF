@@ -1,7 +1,7 @@
 
 public class kingdom {
 	
-	String raceName;
+	String kingdomRaceType;
 	String kingdomName;
 	Resources kingdomResources;
 	Unit kingdomUnits;
@@ -9,7 +9,7 @@ public class kingdom {
 	int workers;
 	
 	public kingdom(String raceType, String kingdomName, Resources resources, Unit unit, Level level, int workers){
-		this.raceName = raceType;
+		this.kingdomRaceType = raceType;
 		this.kingdomName = kingdomName;
 		this.kingdomUnits = unit;
 		this.kingdomLevel = level;
@@ -35,7 +35,7 @@ public class kingdom {
 	
 	
 	public String getRace(){
-		return raceName;
+		return kingdomRaceType;
 	}
 
 	public int getLevel() {

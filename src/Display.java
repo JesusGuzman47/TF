@@ -6,7 +6,7 @@ public class Display {
 	}
 	
 	public static void displayKingdomStats(kingdom kingdom1){
-		System.out.println("Race name being called from another class: " + kingdom1.raceName 
+		System.out.println("Race name being called from another class: " + kingdom1.getRace()
 				+ "\nkingdome name: " + kingdom1.kingdomName 
 				+ "\nResources: " 
 				+ "\n->Gold: " + kingdom1.kingdomResources.resourcesFood
@@ -19,7 +19,7 @@ public class Display {
 	}
 	
 	public static void unitDisplayPrompt(kingdom kingdom1){
-		if(kingdom1.raceName == "elves"){
+		if(kingdom1.getRace() == "elves"){
 			System.out.println("\n=====================================================================");
 			System.out.println("ELVES = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
 			System.out.println("=====================================================================");
@@ -34,7 +34,7 @@ public class Display {
 
 
 	public static void displayUnitCreated(int newGold, int food, int unitAmount) {
-		System.out.println("Inside Display.displayUnitCreated()");
+		System.out.println("-->Inside Display.displayUnitCreated()");
 		System.out.println("new gold: " + newGold );
 		System.out.println("new food: " + food);
 		System.out.println("new unit amount: " + unitAmount);

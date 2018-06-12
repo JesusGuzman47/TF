@@ -5,16 +5,18 @@ public class Choice {
 		System.out.println("Here is where choices are made!");
 	}
 
-	public static void battleOrCreateChoice(kingdom kingdom1){
+	public static boolean battleOrCreateChoice(kingdom kingdom1){
 		String input = engine.randomChoice(); //randomize choice	
 		System.out.println("Inside battleOrCreate choice our value is --> " + input);
 		System.out.println("--->Inside Choice.battleOrCreateChoice()!");
 		if(input == "1"){
 			System.out.println("--->Inside Choice.battleOrCreateChoice() if statement");
-			Action.battle(kingdom1);
+			return true;
+			// Action.checkUnitAndFind(kingdom1);
 		} else {
-			Action.create(kingdom1);
-			System.out.println("--->Inside Choice.battleOrCreateChoice() choice!! not a valid entry!");
+			return false;
+			// Action.create(kingdom1);
+			// System.out.println("--->Inside Choice.battleOrCreateChoice() choice!! not a valid entry!");
 		}
 	}
 	
