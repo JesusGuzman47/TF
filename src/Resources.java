@@ -13,4 +13,5 @@ public class Resources {
 		this.resourcesGold = gold;
 		this.resourcesFood = food;
 	}
+	
 }

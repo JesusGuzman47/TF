@@ -12,12 +12,4 @@ public class Input {
 		
 		return aString;
 	}
-	
-	public static String input2(){
-		String aString = "";
-		Scanner in = new Scanner(System.in);
-		aString = in.next();
-		in.close();
-		return aString;
-	}
 }

@@ -4,7 +4,7 @@ public class Action {
 	static boolean checkUnitAndFind(kingdom kingdom1) { // checkUnit
 		System.out.println("--->Inside Action.checkUnit()!");
 		System.out.println("You chose to battle!\n");
-		if(kingdom.getKingdomUnits(kingdom1) == 1){ // if only 1 unit
+		if(kingdom.getKingdomUnitAmount(kingdom1) == 1){ // if only 1 unit
 			System.out.println("--->Inside Action.checkUnit() if statement.");
 			System.out.println("but lets create some units first...\n");
 			return true;
@@ -41,19 +41,18 @@ public class Action {
 				int workers = 1;
 				Level level = new Level(1, 1, 1);
 				Unit unit = new Unit(opponentRaceType, level.getUnitLevel(), 0);
-				kingdom opponentKingdom = new kingdom(opponentRaceType, opponentKingdomName, opponentResources, unit, level, workers);
-				unit = Action.createOpponentUnits(opponentKingdom, unit);
+				Experience experience = new Experience(0,100);
+				kingdom opponentKingdom = new kingdom(opponentRaceType, opponentKingdomName, opponentResources, unit, level, workers, experience);
+				//unit = Action.createOpponentUnits(opponentKingdom, unit);
+				Action.createOpponentUnits(opponentKingdom);
 				Display.displayKingdomStats(opponentKingdom);
 				return opponentKingdom;
 	}
 	
-	public static Unit createOpponentUnits(kingdom opponentKingdom, Unit unit){
+	public static void createOpponentUnits(kingdom opponentKingdom){
 		System.out.println("--->Inside Action.createOpponentUnits()!");
-		int unitCreated = Unit.createUnit(opponentKingdom);
-		Unit newUnitAmount = new Unit(opponentKingdom.getRace(), opponentKingdom.getLevel(), unitCreated);
-		return newUnitAmount;
+		Unit.createUnit(opponentKingdom);
 	}
-
 
 	public static kingdom CreateKingdom() {
 		// TODO Auto-generated method stub
@@ -64,7 +63,8 @@ public class Action {
 		int workers = 1;
 		Level level = new Level(1, 1, 1);
 		Unit unit = new Unit(raceType, level.newUnitLevel, 1);
-		kingdom kingdom1 = new kingdom(raceType, kingdomName, resources, unit, level, workers);
+		Experience experience = new Experience(0,100);
+		kingdom kingdom1 = new kingdom(raceType, kingdomName, resources, unit, level, workers, experience);
 		System.out.println("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 		return kingdom1;
 	}

@@ -6,7 +6,7 @@ public class Choice {
 	}
 
 	public static boolean battleOrCreateChoice(kingdom kingdom1){
-		String input = engine.randomChoice(); //randomize choice	
+		String input = Engine.randomChoice(); //randomize choice	
 		System.out.println("Inside battleOrCreate choice our value is --> " + input);
 		System.out.println("--->Inside Choice.battleOrCreateChoice()!");
 		if(input == "1"){

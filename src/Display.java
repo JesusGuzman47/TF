@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Display {
 	public static void main(){
@@ -9,11 +10,12 @@ public class Display {
 		System.out.println("Race name being called from another class: " + kingdom1.getRace()
 				+ "\nkingdome name: " + kingdom1.kingdomName 
 				+ "\nResources: " 
-				+ "\n->Gold: " + kingdom1.kingdomResources.resourcesFood
-				+ "\n->Food: " + kingdom1.kingdomResources.resourcesGold
-				+ "\nArmy: " + kingdom1.kingdomUnits.unitAmount
-				+ "\nKingdom level: " + kingdom1.kingdomLevel.newLevel
+				+ "\n->Gold: " + kingdom.getKingdomGold(kingdom1)
+				+ "\n->Food: " + kingdom.getKingdomFood(kingdom1)
+				+ "\nArmy: " + kingdom.getKingdomUnitAmount(kingdom1)
+				+ "\nKingdom level: " + kingdom.getKingdomLevel(kingdom1)
 				+ "\nkingdom exploration level: " + kingdom1.kingdomLevel.newExplorationLevel
+				+ "\nExperience: " + kingdom.getCurrentKingdomExperience(kingdom1) + "/" + kingdom.getMaxExperience(kingdom1)
 				+ "\nworkers: " + kingdom1.workers + "\n");
 		
 	}
@@ -23,7 +25,6 @@ public class Display {
 			System.out.println("\n=====================================================================");
 			System.out.println("ELVES = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
 			System.out.println("=====================================================================");
-			
 			System.out.println("Lets create bowmen!");
 			System.out.println("Each bowman costs 2 gold 1 food");
 			System.out.println("Enter number of bowmen youd like to create!\n");

@@ -12,8 +12,10 @@ public class Battle extends Action{
 	
 	public static void unitBattle(kingdom kingdom1, kingdom opponentKingdom){
 		// who has biggest army		
-		if(kingdom.getKingdomUnits(kingdom1) >= kingdom.getKingdomUnits(opponentKingdom)){
-			System.out.println("You're army wins");
+		if(kingdom.getKingdomUnitAmount(kingdom1) >= kingdom.getKingdomUnitAmount(opponentKingdom)){
+			System.out.println("You're army wins"); 
+			// based off army size and army level
+			Gain.gains();
 		} else {
 			System.out.println("You're army loses");
 		}

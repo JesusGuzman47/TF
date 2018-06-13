@@ -6,19 +6,38 @@ public class kingdom {
 	Resources kingdomResources;
 	Unit kingdomUnits;
 	Level kingdomLevel;
+	Experience kingdomExperience;
 	int workers;
 	
-	public kingdom(String raceType, String kingdomName, Resources resources, Unit unit, Level level, int workers){
+	public kingdom(String raceType, String kingdomName, Resources resources, Unit unit, Level level, int workers, Experience experience){
 		this.kingdomRaceType = raceType;
 		this.kingdomName = kingdomName;
 		this.kingdomUnits = unit;
 		this.kingdomLevel = level;
 		this.kingdomResources = resources;
+		this.kingdomExperience = experience;
 		this.workers = workers;
+	}
+	
+	public String getRace(){
+		return kingdomRaceType;
 	}
 	
 	public String getKingdomName(){
 		return kingdomName;
+	}
+	
+	public static int getKingdomUnitAmount(kingdom kingdom1){
+		return kingdom1.kingdomUnits.unitAmount;
+	}
+	
+	public void setKingdomUnitAmount(int unit){
+		kingdomUnits.unitAmount = unit;
+	}
+	
+	public static int getKingdomLevel(kingdom kingdom1) {
+		// TODO Auto-generated method stub
+		return kingdom1.kingdomLevel.newLevel;
 	}
 	
 	public static int getKingdomGold(kingdom kingdom1){
@@ -29,18 +48,20 @@ public class kingdom {
 		return kingdom1.kingdomResources.resourcesFood;
 	}
 	
-	public static int getKingdomUnits(kingdom kingdom1){
-		return kingdom1.kingdomUnits.unitAmount;
+	public static int getCurrentKingdomExperience(kingdom kingdom1){
+		return kingdom1.kingdomExperience.currentExperience;
 	}
 	
+	/*public static void setCurrentKingdomExperience(kingdom kingdom1){
+		kingdom1.kingdomExperience.currentExperience;
+	}*/
 	
-	public String getRace(){
-		return kingdomRaceType;
+	public static int getMaxExperience(kingdom kingdom1){
+		return kingdom1.kingdomExperience.maxExperience;
 	}
-
-	public int getLevel() {
-		// TODO Auto-generated method stub
-		return kingdomLevel.newLevel;
+	
+	public static int getWorkers(kingdom kingdom1){
+		return kingdom1.workers;
 	}
 	
 	public static void main(String[] args){

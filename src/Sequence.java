@@ -5,6 +5,7 @@ public class Sequence {
 		System.out.println("Can only choose elves.\n");
 		kingdom kingdom1 = Action.CreateKingdom();
 		Display.displayKingdomStats(kingdom1);
+		repeatSequence(kingdom1);
 		repeatSequence(kingdom1); 
 	}
 	

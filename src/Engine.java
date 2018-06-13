@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.lang.Math;
 
-public class engine {
+public class Engine {
 	public static void main(String[] args){
 		// explore (explorationLevel)
 		// increase chances of finding opponent by building workers
@@ -51,8 +51,7 @@ public class engine {
 		// higher the level the better the chances
 		Random objGenerator = new Random();
 		int number = 0;
-		kingdom1.getLevel();
-		System.out.println("kingdom level: " + kingdom1.kingdomLevel.newLevel);
+		System.out.println("kingdom level: " + kingdom.getKingdomLevel(kingdom1));
 		for(int i = 0; i < number; i++){
 			int randomNumber = objGenerator.nextInt(100);
 			if(randomNumber < 33){ // 33 will be a variable
@@ -79,7 +78,7 @@ public class engine {
 	// 33% luck 66% skill
 	public static int randomlyCreateUnitAmount(kingdom kingdom1){ // not rando yet
 		int unit = 0;
-		System.out.println("--->Inside engine.randomlyCreateUnitAmount()!");
+		System.out.println("--->Inside Engine.randomlyCreateUnitAmount()!");
 		if((2 < kingdom.getKingdomGold(kingdom1)) && (1 < kingdom.getKingdomFood(kingdom1))){
 			 unit = (kingdom.getKingdomGold(kingdom1)/2);// 100/2 = 50				 
 		} else {
