@@ -4,20 +4,22 @@ public class Battle extends Action{
 		//This is where unit go to battle
 	}
 	
-	public static void battleOpponent(kingdom kingdom1) {
+	public static boolean battleOpponent(kingdom kingdom1) {
 		System.out.println("--->Inside Action.battleOpponent()!");
-		kingdom opponentKingdom = Action.createOpponent(); //create opponent inside battle opponent? or should be created sooner?
-		unitBattle(kingdom1, opponentKingdom);
+		//kingdom opponentKingdom = Action.createOpponent(); //create opponent inside battle opponent? or should be created sooner?
+		return true;
 	}
 	
-	public static void unitBattle(kingdom kingdom1, kingdom opponentKingdom){
+	public static boolean unitBattle(kingdom kingdom1, kingdom opponentKingdom){
 		// who has biggest army		
 		if(kingdom.getKingdomUnitAmount(kingdom1) >= kingdom.getKingdomUnitAmount(opponentKingdom)){
 			System.out.println("You're army wins"); 
 			// based off army size and army level
-			Gain.gains();
+			//Gain.gains();
+			return true;
 		} else {
 			System.out.println("You're army loses");
+			return false;
 		}
 	}
 	

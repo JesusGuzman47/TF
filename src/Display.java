@@ -7,7 +7,7 @@ public class Display {
 	}
 	
 	public static void displayKingdomStats(kingdom kingdom1){
-		System.out.println("Race name being called from another class: " + kingdom1.getRace()
+		System.out.println("Race name being called from another class: " + kingdom.getKingdomRace(kingdom1)
 				+ "\nkingdome name: " + kingdom1.kingdomName 
 				+ "\nResources: " 
 				+ "\n->Gold: " + kingdom.getKingdomGold(kingdom1)
@@ -15,13 +15,13 @@ public class Display {
 				+ "\nArmy: " + kingdom.getKingdomUnitAmount(kingdom1)
 				+ "\nKingdom level: " + kingdom.getKingdomLevel(kingdom1)
 				+ "\nkingdom exploration level: " + kingdom1.kingdomLevel.newExplorationLevel
-				+ "\nExperience: " + kingdom.getCurrentKingdomExperience(kingdom1) + "/" + kingdom.getMaxExperience(kingdom1)
+				+ "\nExperience: " + kingdom.getCurrentKingdomExperience(kingdom1) + "/" + kingdom.getMaxKingdomExperience(kingdom1)
 				+ "\nworkers: " + kingdom1.workers + "\n");
 		
 	}
 	
 	public static void unitDisplayPrompt(kingdom kingdom1){
-		if(kingdom1.getRace() == "elves"){
+		if(kingdom.getKingdomRace(kingdom1) == "elves"){
 			System.out.println("\n=====================================================================");
 			System.out.println("ELVES = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
 			System.out.println("=====================================================================");

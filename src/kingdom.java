@@ -1,7 +1,7 @@
 
 public class kingdom {
 	
-	String kingdomRaceType;
+	public String kingdomRaceType;
 	String kingdomName;
 	Resources kingdomResources;
 	Unit kingdomUnits;
@@ -19,8 +19,8 @@ public class kingdom {
 		this.workers = workers;
 	}
 	
-	public String getRace(){
-		return kingdomRaceType;
+	public static String getKingdomRace(kingdom kingdom1){
+		return kingdom1.kingdomRaceType;
 	}
 	
 	public String getKingdomName(){
@@ -40,6 +40,11 @@ public class kingdom {
 		return kingdom1.kingdomLevel.newLevel;
 	}
 	
+	public void setKingdomLevel(int level){
+		kingdomLevel.newLevel = level;
+	}
+	
+	
 	public static int getKingdomGold(kingdom kingdom1){
 		return kingdom1.kingdomResources.resourcesGold;
 	}
@@ -52,11 +57,11 @@ public class kingdom {
 		return kingdom1.kingdomExperience.currentExperience;
 	}
 	
-	/*public static void setCurrentKingdomExperience(kingdom kingdom1){
-		kingdom1.kingdomExperience.currentExperience;
-	}*/
+	public void setCurrentKingdomExperience(int experience){
+		kingdomExperience.currentExperience = experience;
+	}
 	
-	public static int getMaxExperience(kingdom kingdom1){
+	public static int getMaxKingdomExperience(kingdom kingdom1){
 		return kingdom1.kingdomExperience.maxExperience;
 	}
 	

@@ -27,7 +27,7 @@ public class Action {
 	
 	static boolean create(kingdom kingdom1) {
 		System.out.println("--->Inside Action.create() "); 
-		System.out.println("Create " + kingdom1.getRace() + " unit\n");
+		System.out.println("Create " + kingdom.getKingdomRace(kingdom1) + " unit\n");
 		return true;
 	}
 	
@@ -41,7 +41,7 @@ public class Action {
 				int workers = 1;
 				Level level = new Level(1, 1, 1);
 				Unit unit = new Unit(opponentRaceType, level.getUnitLevel(), 0);
-				Experience experience = new Experience(0,100);
+				Experience experience = new Experience(25,100);
 				kingdom opponentKingdom = new kingdom(opponentRaceType, opponentKingdomName, opponentResources, unit, level, workers, experience);
 				//unit = Action.createOpponentUnits(opponentKingdom, unit);
 				Action.createOpponentUnits(opponentKingdom);

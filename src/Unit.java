@@ -65,7 +65,7 @@ public class Unit {
 		//  this is because you may be able to create or to not create because there are no units to make, create people
 		System.out.println("--->Inside Unit.createUnit()!");
 		System.out.println("You chose to create: " + unit + " units.");
-			if(kingdom1.getRace() == "elves"){
+			if(kingdom.getKingdomRace(kingdom1) == "elves"){
 				kingdom1.kingdomResources.resourcesGold = (kingdom.getKingdomGold(kingdom1) - (2 * unit)); // 100 - ( 5 * 2)
 				kingdom1.kingdomResources.resourcesFood = (kingdom.getKingdomFood(kingdom1) - unit); // 50 - 5 
 				kingdom1.setKingdomUnitAmount(kingdom.getKingdomUnitAmount(kingdom1)+ unit); 

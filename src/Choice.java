@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Choice {
 	public static void main(){
 		System.out.println("Here is where choices are made!");
