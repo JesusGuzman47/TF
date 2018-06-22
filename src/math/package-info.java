@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author jesus
- *
- */
-package math;

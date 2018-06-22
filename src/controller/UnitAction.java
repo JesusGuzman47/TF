@@ -8,7 +8,7 @@ public class UnitAction {
 		System.out.println("GK2 attack: " + UnitStat.getAttackStats(globalKingdoms.globalKingdom2));
 		System.out.println("gk1 dmg: " + attack(globalKingdoms.globalKingdom1, globalKingdoms.globalKingdom2));
 		System.out.println("gk2 dmg: " + attack(globalKingdoms.globalKingdom2, globalKingdoms.globalKingdom1));
-		System.out.println("gk2 defense: " + defend(globalKingdoms.globalKingdom1));
+		//System.out.println("gk2 defense: " + defend(globalKingdoms.globalKingdom1));
 		
 	}
 	

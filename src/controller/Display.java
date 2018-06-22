@@ -2,8 +2,8 @@ package controller;
 
 public class Display {
 	public static void main(){
-		//
-		
+		//1
+		displayMeter(50, 25, 12, 25 + 2,20);
 	}
 	
 	public static void kingdomStats(kingdom kingdom1){
@@ -50,6 +50,22 @@ public class Display {
 		System.out.println("\n\tBattle or create");
 		System.out.println("\t1) Battle");
 		System.out.println("\t2) Create\n");
+	}
+	
+	public static void displayMeter(int total, int max, int min, int minDex, int target){
+		for(int i = 0; i <= total; i++){
+			System.out.print("-");
+			if(i == target){
+				System.out.print("*");
+			} else if((i == min) || (i == max)){
+				System.out.print("|");
+			} else if(i == minDex){
+				System.out.print("/");
+			} else {
+				continue;
+			}
+		}
+		System.out.println();		
 	}
 	
 	public static void displayEnterRace(){

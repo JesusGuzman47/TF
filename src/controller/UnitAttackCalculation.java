@@ -60,18 +60,20 @@ public class UnitAttackCalculation {
 	// SPD 3 * FOC 3
 	// 9 * 10
 	// 90 - (SPD * AWR)
-
+	// K attacks OK
 	public static int chanceItHits(kingdom kingdom1, kingdom opponentKingdom){
-		Random objGenerator = new Random();
-		int randomNumber = objGenerator.nextInt(100);
+		//Random objGenerator = new Random();
+		int randomNumber = 100;
+		
 		//System.out.println("The random number must be less than 89(0 - 90) for choice to be 1: " + randomNumber + "\n");
 		//double hitAccuracy = (((double)UnitStat.getSpeedStats(opponentKingdom)) - 1) * (double)UnitStat.getDexterityStats(kingdom1) * 5 ;
 		//System.out.println(hitAccuracy + " = " +  UnitStat.getSpeedStats(kingdom1) + " * " + UnitStat.getDexterityStats(opponentKingdom));
-		if(randomNumber <= 100){
-			System.out.println("HIT");
-			return microFight(defenseAmount(kingdom1), damageAmount(opponentKingdom));
+		if(randomNumber == 100){
+			System.out.println("\nHIT");
+			//OK defends from K
+			return microFight(kingdom1, opponentKingdom, defenseAmount(opponentKingdom), damageAmount(kingdom1));
 		}else {
-			System.out.println("MISS\n");
+			System.out.println("\nMISS");
 			return 0;
 		}
 		
@@ -79,44 +81,90 @@ public class UnitAttackCalculation {
 	
 	public static int defenseAmount(kingdom kingdom1){
 		Random objGenerator = new Random();
-		// strength * dexterity 
-		int defDiv2Max = UnitStat.getDefenseStats(kingdom1) / 2;
-		int defDiv2Min = defDiv2Max/2; 
-
-		int dexDiv2Max = UnitStat.getDexterityStats(kingdom1) / 2;
-		int dexDiv2Min = dexDiv2Max /2; 
+		int defenseMax = (UnitStat.getDefenseStats(kingdom1) / 2) + UnitStat.getFocusStats(kingdom1);
+		int defenseMin = defenseMax/2 ; 
+		int newDefenseMin = defenseMin + UnitStat.getDexterityStats(kingdom1) + UnitStat.getFocusStats(kingdom1);
 		
-		int randomDefenseStat = objGenerator.nextInt((defDiv2Max/defDiv2Min) + 1) + defDiv2Min;
-		int randomDexterityStat = objGenerator.nextInt((dexDiv2Max/dexDiv2Min) + 1) + dexDiv2Min;
-		int total = randomDefenseStat * randomDexterityStat;
-		return objGenerator.nextInt((total/defDiv2Min) + 1) + total; // falls inside 0 to max 63 or 10
+		if(newDefenseMin == defenseMax){
+			defenseMin = defenseMin - 1;
+			int target = objGenerator.nextInt((defenseMax - newDefenseMin) + 1) + newDefenseMin;
+			//showAmount("D", defenseMax, defenseMin, target, kingdom1);
+			System.out.print(kingdom1.getKingdomName() + " Defense Meter: ");
+			Display.displayMeter(UnitStat.getDefenseStats(kingdom1), defenseMax, defenseMin, newDefenseMin, target);
+			return target; 
+		} else if(newDefenseMin >= defenseMax){
+			defenseMax = newDefenseMin - 1;
+			System.out.println(kingdom1.getKingdomName() + " Reached true defense. Meter: ");
+			Display.displayMeter(UnitStat.getDefenseStats(kingdom1), defenseMax, defenseMin, newDefenseMin, defenseMax);
+			System.out.println("Increase defense stat");
+			return defenseMax;
+		} else {
+			int target = objGenerator.nextInt((defenseMax - newDefenseMin) + 1) + newDefenseMin;
+			//showAmount("D", defenseMax, defenseMin, target, kingdom1);
+			System.out.print(kingdom1.getKingdomName() + " Defense Meter: \n");
+			Display.displayMeter(UnitStat.getDefenseStats(kingdom1), defenseMax, defenseMin, newDefenseMin, target);
+			return target;  // falls inside 0 to max 63 or 10
+		}
 	}
 	
 	public static int damageAmount(kingdom kingdom1){
 		Random objGenerator = new Random();
-		// strength * dexterity 
-		int atkDiv2Max = UnitStat.getAttackStats(kingdom1) / 2;
-		//System.out.println("\nGet attack stat: " + UnitStat.getAttackStats(kingdom1) / 2);
-		int atkDiv2Min = atkDiv2Max/2; 
-
-		int dexDiv2Max = UnitStat.getDexterityStats(kingdom1) / 2;
-		//System.out.println("Get dexterity stat: " + UnitStat.getDexterityStats(kingdom1) / 2);
-		int dexDiv2Min = dexDiv2Max /2; 
 		
-		int randomAttackStat = objGenerator.nextInt((atkDiv2Max/atkDiv2Min) + 1) + atkDiv2Min;
-		int randomDexterityStat = objGenerator.nextInt((dexDiv2Max/dexDiv2Min) + 1) + dexDiv2Min;
-		int total = randomAttackStat * randomDexterityStat;
-		return objGenerator.nextInt((total/atkDiv2Min) + 1) + total; // falls inside 0 to max 63 or 10
+		int newAttackMax = (UnitStat.getAttackStats(kingdom1) / 2); 
+		newAttackMax = newAttackMax + UnitStat.getFocusStats(kingdom1);
+		
+		int attackMin = newAttackMax / 2;
+		int newAttackMin = attackMin + UnitStat.getDexterityStats(kingdom1) + UnitStat.getFocusStats(kingdom1); // + dextirity 
+		
+		if(newAttackMin == newAttackMax){
+			newAttackMin = newAttackMin - 1;
+			int target = objGenerator.nextInt((newAttackMax - newAttackMin) + 1) + newAttackMin;
+			//showAmount("A",newAttackMax, newAttackMin, target, kingdom1);
+			System.out.print(kingdom1.getKingdomName() + " Attack Meter: \n");
+			Display.displayMeter(UnitStat.getAttackStats(kingdom1), newAttackMax, attackMin, newAttackMin, target);
+			return target;
+		} else if(newAttackMin >= newAttackMax){
+			newAttackMax = newAttackMin - 1;
+			System.out.println(kingdom1.getKingdomName() + " Reached true Attack. Meter: ");
+			Display.displayMeter(UnitStat.getAttackStats(kingdom1), newAttackMax, attackMin, newAttackMin, newAttackMax);
+			System.out.println("Increase attack stat");
+			return newAttackMax;  
+		} else {
+			int target = objGenerator.nextInt((newAttackMax - newAttackMin) + 1) + newAttackMin;
+			//showAmount("A",newAttackMax, newAttackMin, target, kingdom1);
+			System.out.print(kingdom1.getKingdomName() + " Attack Meter: \n");
+			Display.displayMeter(UnitStat.getAttackStats(kingdom1), newAttackMax, attackMin, newAttackMin, target);
+			return target;
+		}
 	}
 	
-	public static int microFight(int dmg, int def){
-		if(dmg > def){
-			System.out.println("damage dealt: " + Math.abs(def - dmg));
+	public static int microFight(kingdom kingdom1, kingdom opponentKingdom, int dmg, int def){
+		if(dmg < def){
+			System.out.println(kingdom1.getKingdomName() + " dealt " + Math.abs(def - dmg) + " damage.");
 			return def - dmg;
 		} else {
-			System.out.println("damage blocked: " + Math.abs(def - dmg));
+			System.out.println(opponentKingdom.getKingdomName() + " blocked " + Math.abs(def - dmg) + " damage.");
 			return def - dmg;
 		} 
+	}
+	
+
+	public static void showAmount(String ad, int max, int min, int target, kingdom kingdom1){
+		System.out.println("kingdom name: " + kingdom1.getKingdomName());
+		if(ad == "D"){
+			System.out.println("Def: " + UnitStat.getDefenseStats(kingdom1) 
+			+ " \nmax D: " + max 
+			+ " \nmin D: " + min
+			+ " \ntarget: " + target);
+		} else if(ad == "A"){
+			System.out.println("Atk: " + UnitStat.getAttackStats(kingdom1) 
+			+ " \nmax Atk: " + max
+			+ " \nmin Atk: " + min
+			+ " \ntarget: " + target);
+		} else {
+			System.out.println("Nothing to show");
+		}
+		
 	}
 	
 	public static void Main(String[] args){

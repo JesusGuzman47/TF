@@ -78,10 +78,15 @@ public class Engine {
 	
 	// 33% luck 66% skill
 	public static int randomlyCreateUnitAmount(kingdom kingdom1){ // not rando yet
-		int unit = 0;
+		Random objGenerator = new Random();
+		// max will turn into arm wishlist
+		// chance will be based on kingdom ability to create desired things
+		int max = Resources.getGold(kingdom1) / 2;
+		int unit = objGenerator.nextInt((max - 0) + 1) + 0;
+
 		System.out.println("--->Inside Engine.randomlyCreateUnitAmount()!");
-		if((2 < Resources.getGold(kingdom1)) && (1 < Resources.getFood(kingdom1))){
-			 unit = (Resources.getGold(kingdom1)/2);// 100/2 = 50				 
+		if(max >= 2){
+			return unit;
 		} else {
 			System.out.println("\nKingdom does not have enough + Resources + to create units.\n");
 		}

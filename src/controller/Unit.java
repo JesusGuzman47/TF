@@ -64,15 +64,16 @@ public class Unit {
 		//directly change the field of object
 		Display.kingdomStats(kingdom1);
 		Display.unitDisplayPrompt(kingdom1);
+		
 		int unitAmount = Engine.randomlyCreateUnitAmount(kingdom1);
-		// based upon amount of gold currently have 
-		//  should be random also //when you click 5 you can only hope to get 5 units
-		//  this is because you may be able to create or to not create because there are no units to make, create people
+		
 		System.out.println("--->Inside Unit.createUnit()!");
 		System.out.println("You chose to create: " + unitAmount + " units.");
 			if(kingdom.getKingdomRace(kingdom1) == "elves"){
-				Resources.setGold(kingdom1, (Resources.getGold(kingdom1) - (2 * unitAmount)));
-				Resources.setFood(kingdom1, (Resources.getFood(kingdom1) - unitAmount));
+				int newGold = Resources.getGold(kingdom1) - (2 * unitAmount);
+				int newFood = (Resources.getFood(kingdom1) - unitAmount);
+				Resources.setGold(kingdom1, newGold);
+				Resources.setFood(kingdom1, newFood);
 				Unit.setUnit(kingdom1, (Unit.getUnit(kingdom1) + unitAmount));
 				//Resources.getGold(kingdom1), Resources.getFood(kingdom1), Unit.getUnit(kingdom1)
 				Display.displayUnitCreated(kingdom1);
@@ -100,10 +101,12 @@ public class Unit {
 	public static void main(String[] args){
 		Level level = new Level(1,1,5);
 		
-		UnitStat unitStat = new UnitStat(3, 5, 8, 10, 5, 4, 5);
+		UnitStat unitStat = new UnitStat(3, 5, 8, 10, 5, 4, 6, 5, 5);
 		Unit unit1 = new Unit("elves", level.level , 50, unitStat);
 		System.out.println("Unit attack stat: " + unit1.unitStat.unitAttack);
 		//use kingdom or unit?
+		
+		Unit.createUnit(globalKingdoms.globalKingdom1);
 	}
 
 }

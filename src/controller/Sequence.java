@@ -8,8 +8,8 @@ public class Sequence {
 		String kingdomName = "litKingdom";//kingdomEntry.enterName();
 		kingdom kingdom1 = KingdomAction.CreateKingdom(raceType, kingdomName);
 		//Display.displayKingdomStats(kingdom1);
-		kingdom opponentKingdom = KingdomAction.createOpponent();
-		repeatSequence(kingdom1, opponentKingdom);
+		//kingdom opponentKingdom = KingdomAction.createOpponent();
+		repeatSequence(kingdom1, generateKingdoms.generateKingdom(kingdom1));
 	}
 	
 	
@@ -28,16 +28,16 @@ public class Sequence {
 				System.out.println("===>Did not check unit and find.");
 				if(Find.findOpponent(kingdom1)){ //3
 					if(Battle.battleOpponent(kingdom1)){// 4
-						if(Battle.unitBattle(kingdom1, opponentKingdom)){ // 5
+						if(Battle.unitBattle(kingdom1, generateKingdoms.generateKingdom(kingdom1))){ // 5
 							// if kingdom1 wins
 							if(Gain.gains()){ // 6
-								if(Gain.gainExperience(kingdom1, opponentKingdom) && Gain.gainGold(kingdom1) && Gain.gainFood(kingdom1)){ // 7
+								if(Gain.gainExperience(kingdom1, opponentKingdom) && Gain.gainGold(kingdom1, opponentKingdom) && Gain.gainFood(kingdom1, opponentKingdom)){ // 7
 										if(Gain.gainLevel(kingdom1)){ //checks if gained level after experience calculator
 											System.out.println("==>Gained a level.");
-											repeatSequence(kingdom1, opponentKingdom);
+											repeatSequence(kingdom1, generateKingdoms.generateKingdom(kingdom1));
 										} else {
 											System.out.println("==>Did not gain level.");
-											repeatSequence(kingdom1, opponentKingdom);
+											repeatSequence(kingdom1, generateKingdoms.generateKingdom(kingdom1));
 										}
 								} else {
 									System.out.println("==>Did not gain?");

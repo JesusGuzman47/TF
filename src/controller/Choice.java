@@ -11,11 +11,8 @@ public class Choice {
 		if(input == "1"){
 			System.out.println("--->Inside Choice.battleOrCreateChoice() if statement");
 			return true;
-			// KingdomAction.checkUnitAndFind(kingdom1);
 		} else {
 			return false;
-			// KingdomAction.create(kingdom1);
-			// System.out.println("--->Inside Choice.battleOrCreateChoice() choice!! not a valid entry!");
 		}
 	}
 	

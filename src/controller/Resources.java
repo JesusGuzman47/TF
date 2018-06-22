@@ -29,7 +29,7 @@ public class Resources {
 	}
 	
 	public static void setFood(kingdom kingdom1, int food){
-		kingdom1.kingdomResources.resourcesGold = food;
+		kingdom1.kingdomResources.resourcesFood = food;
 	}
 	
 }

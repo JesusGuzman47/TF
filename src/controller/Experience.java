@@ -10,12 +10,17 @@ public class Experience {
 	}
 	
 	public static void increaseCurrentExperience(kingdom kingdom1, kingdom opponentKingdom){		
-		setCurrentKingdomExperience(kingdom1, (getCurrentKingdomExperience(kingdom1) + (getMaxKingdomExperience(opponentKingdom) * Level.getKingdomLevel(opponentKingdom)))); // (x + (x(o) * z(o)))
-		System.out.println("Gained " + (getMaxKingdomExperience(opponentKingdom) * Level.getKingdomLevel(opponentKingdom)) + " experience");
+		int exp = getMaxKingdomExperience(opponentKingdom) * Level.getKingdomLevel(opponentKingdom);
+		int newExp = (getCurrentKingdomExperience(kingdom1) + exp);
+		setCurrentKingdomExperience(kingdom1, newExp); // (x + (x(o) * z(o)))
+		System.out.println("Gained " + exp + " experience");
 	}
 
 	public static void increaseMaxExperienceCalculator(kingdom kingdom1){
-		setMaxKingdomExperience(kingdom1, (getCurrentKingdomExperience(kingdom1) + Experience.getMaxKingdomExperience(kingdom1) + (Level.getKingdomLevel(kingdom1) ^ 2))); // maxExp + level ^ 2
+		int exp = (Level.getKingdomLevel(kingdom1) ^ 2);
+		int maxExp = (getCurrentKingdomExperience(kingdom1) + exp);
+		setMaxKingdomExperience(kingdom1, maxExp); // maxExp + level ^ 2
+		System.out.println("Increased max experience by: " + exp);
 	}
 	
 	public static int getCurrentKingdomExperience(kingdom kingdom1){
@@ -37,13 +42,16 @@ public class Experience {
 
 	
 	public static void main(String[] args){
-		Experience yourExperienceTest = new Experience(1, 23);
-		Experience opponentExperienceTest = new Experience(2, 33);
-		System.out.println("your current experience test: " + yourExperienceTest.currentExperience);
-		System.out.println("your max experience test: " + yourExperienceTest.maxExperience);
-		
-
-		System.out.println("your current experience test: " + opponentExperienceTest.currentExperience);
-		System.out.println("your max experience test: " + opponentExperienceTest.maxExperience);
+		System.out.println("your current experience test: " + getCurrentKingdomExperience(globalKingdoms.globalKingdom1));
+		System.out.println("your max experience test: " + getMaxKingdomExperience(globalKingdoms.globalKingdom1));
+				
+		for(int i = 0; i <= 5; i++){
+			System.out.println();
+			increaseCurrentExperience(globalKingdoms.globalKingdom1, globalKingdoms.globalKingdom2);
+			increaseMaxExperienceCalculator(globalKingdoms.globalKingdom1);
+			System.out.println("new max exp: " + getMaxKingdomExperience(globalKingdoms.globalKingdom1));
+			System.out.println("new current exp: " + getCurrentKingdomExperience(globalKingdoms.globalKingdom1));
+			System.out.println();
+		}
 	}
 }

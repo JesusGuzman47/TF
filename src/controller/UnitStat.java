@@ -7,17 +7,21 @@ public class UnitStat {
 	int unitChance;
 	int unitSpeed;
 	int unitDexterity;
+	int unitFocus;
 	int unitHealthPoints;
+	int unitTotalHealthPoints;
 	
 	
-	UnitStat(int Strength, int Defense, int Chance, int Range, int Speed, int Dexterity, int healthPoints){
+	UnitStat(int Strength, int Defense, int Chance, int Range, int Speed, int Dexterity, int Focus, int healthPoints, int totalHealthPoints){
 		this.unitAttack = Strength;
 		this.unitDefense = Defense;
 		this.unitChance = Chance; 
 		this.unitRange = Range; 
 		this.unitSpeed = Speed;
 		this.unitDexterity = Dexterity;
+		this.unitFocus = Focus;
 		this.unitHealthPoints = healthPoints;
+		this.unitTotalHealthPoints = totalHealthPoints;
 	}
 	
 	public static void displayStats(kingdom kingdom1){
@@ -53,8 +57,17 @@ public class UnitStat {
 		return kingdom1.kingdomUnits.unitStat.unitDexterity;
 	}
 	
+	public static int getFocusStats(kingdom kingdom1){
+		return kingdom1.kingdomUnits.unitStat.unitDexterity;
+	}
+	
+	
 	public static int getHealthPointStats(kingdom kingdom1){
 		return kingdom1.kingdomUnits.unitStat.unitHealthPoints;
+	}
+	
+	public static int getTotalHealthPointStats(kingdom kingdom1){
+		return kingdom1.kingdomUnits.unitStat.unitTotalHealthPoints;
 	}
 	
 	public static void setHealthPointStats(kingdom kingdom1, int healthPoints){
@@ -73,9 +86,10 @@ public class UnitStat {
 		return defenseStat; // unit attack stat
 	}
 	
-	public static void getAllStats(kingdom kingdom1){
+	public static void showAllStats(kingdom kingdom1){
 		System.out.println("Stats of " + kingdom1.getKingdomName());
-		System.out.println("gk1 -- Attack stats: " + getAttackStats(kingdom1));
+		System.out.println("gk1"
+			+ " -- Attack stats: " + getAttackStats(kingdom1));
 		System.out.println("gk1 -- defense stats: " + getDefenseStats(kingdom1));
 		System.out.println("gk1 -- Chance stats: " + getChanceStats(kingdom1));
 		System.out.println("gk1 -- Range stats: " + getRangeStats(kingdom1));
@@ -87,8 +101,8 @@ public class UnitStat {
 		setHealthPointStats(globalKingdoms.globalKingdom1, (getHealthPointStats(globalKingdoms.globalKingdom1) - 1));
 		System.out.println("gk1 -- New health point stats: " + getHealthPointStats(globalKingdoms.globalKingdom1));
 		
-		getAllStats(globalKingdoms.globalKingdom1);
-		getAllStats(globalKingdoms.globalKingdom2);
+		showAllStats(globalKingdoms.globalKingdom1);
+		showAllStats(globalKingdoms.globalKingdom2);
 		
 		UnitAttackCalculation.chanceItHits(globalKingdoms.globalKingdom1,globalKingdoms.globalKingdom1);
 	}

@@ -1,11 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
-//
-
 public class Battle extends KingdomAction{
-
-	private static ArrayList<Integer> hp = new ArrayList<Integer>(2);
 	
 	public static boolean battleOpponent(kingdom kingdom1) {
 		System.out.println("--->Inside KingdomAction.battleOpponent()!");
@@ -21,56 +16,54 @@ public class Battle extends KingdomAction{
 	 * For now an army will reach 0
 	 */	
 	public static boolean unitBattle(kingdom kingdom1, kingdom opponentKingdom){
-		System.out.println("opponent unit amount: " + Unit.getUnit(opponentKingdom));
-		System.out.println("kingdom unit amount: " + Unit.getUnit(kingdom1));
+		System.out.println(opponentKingdom.getKingdomName() + " unit amount: " + Unit.getUnit(opponentKingdom));
+		System.out.println(kingdom1.getKingdomName() + " unit amount: " + Unit.getUnit(kingdom1));
 		
 		if(Unit.getUnit(kingdom1) == 0){ // an army lost all units	
-			System.out.println("Kingdom has lost all units");
-			battleDone(kingdom1);
-			return true; // battle done
+			return true;//battleDone(kingdom1);// battle done
 		} else if(Unit.getUnit(opponentKingdom) == 0){ // an army lost all units
-			System.out.println("Opponent has lost all units");
-			battleDone(opponentKingdom);
-			return true; //battle done
+			return true;//battleDone(opponentKingdom); //battle done
 		} else {
 			microBattle(kingdom1, opponentKingdom);
+			return true;
 		}
-		return true;
 	}
 	
-	public static void battleDone(kingdom kingdom1){
-		System.out.println("kingdom "+ kingdom1.getKingdomName()+" is victorious");
+	public static boolean battleDone(kingdom kingdom1){
+		System.out.println(kingdom1.getKingdomName() + "Kingdom has lost all units");
+		System.out.println("kingdom "+ kingdom1.getKingdomName()+" is defeated");
+		return true;
 	}
 	
 
 	public static void microBattle(kingdom kingdom1, kingdom opponentKingdom){			
-			//declaring ArrayList with initial size n
-	        System.out.println("Both players hitpoints: " + hp);       
-			System.out.println("hp1: " + UnitStat.getHealthPointStats(kingdom1));
-			System.out.println("hp2: " + UnitStat.getHealthPointStats(opponentKingdom));
-			
-			int oppDMG = UnitAction.attack(opponentKingdom, kingdom1);
 			int kinDMG = UnitAction.attack(kingdom1, opponentKingdom);
+			int oppDMG = UnitAction.attack(opponentKingdom, kingdom1);
+			
 			if(kinDMG <= 0){
-				System.out.println(opponentKingdom.getKingdomName() + " does zero damage " + oppDMG);
-				unitBattle(kingdom1, opponentKingdom);
-			} else if(oppDMG <= 0){
 				System.out.println(kingdom1.getKingdomName() + " does zero damage " + kinDMG);
 				unitBattle(kingdom1, opponentKingdom);
+			} else if(oppDMG <= 0){
+				System.out.println(opponentKingdom.getKingdomName() + " does zero damage " + oppDMG);
+				unitBattle(kingdom1, opponentKingdom);
 			} else {
-				UnitStat.setHealthPointStats(kingdom1, (UnitStat.getHealthPointStats(kingdom1) - kinDMG)); // attacking kingdom
-				UnitStat.setHealthPointStats(opponentKingdom, (UnitStat.getHealthPointStats(opponentKingdom) - oppDMG)); // attacking opponent
+				int newHP = UnitStat.getHealthPointStats(kingdom1) - kinDMG;
+				System.out.println(kingdom1.getKingdomName() + " current unit HP: (" + UnitStat.getHealthPointStats(kingdom1) + " - " + kinDMG + ") / " + UnitStat.getTotalHealthPointStats(kingdom1) );
+				UnitStat.setHealthPointStats(kingdom1, (newHP)); 
 				
-				System.out.println("new hp1 for 1 unit: " + UnitStat.getHealthPointStats(kingdom1));
-				System.out.println("new hp2 for 1 unit: " + UnitStat.getHealthPointStats(opponentKingdom));
+				int newHP2 = UnitStat.getHealthPointStats(kingdom1) - kinDMG;
+				System.out.println(opponentKingdom.getKingdomName() + " current unit HP: (" + UnitStat.getHealthPointStats(opponentKingdom) + " - " + oppDMG + ") / " + UnitStat.getTotalHealthPointStats(opponentKingdom));
+				UnitStat.setHealthPointStats(opponentKingdom, newHP2); 
 				
 				if(UnitStat.getHealthPointStats(kingdom1) <= 0){
 					Unit.setUnit(kingdom1, ((Unit.getUnit(kingdom1)) - 1)); // subtract 1 unit
-					UnitStat.setHealthPointStats(kingdom1, hp.get(0)); // reset healthpoints because new unit comes out
+					System.out.println(kingdom1.getKingdomName() + " -> Unit Replaced. ");
+					UnitStat.setHealthPointStats(kingdom1, UnitStat.getTotalHealthPointStats(kingdom1)); // reset healthpoints because new unit comes out
 					unitBattle(kingdom1, opponentKingdom); // go into 
-				}else if(UnitStat.getHealthPointStats(opponentKingdom) <= 0){ // subtract 1 unit
-					Unit.setUnit(opponentKingdom, ((Unit.getUnit(opponentKingdom)) - 1));
-					UnitStat.setHealthPointStats(opponentKingdom, hp.get(1));
+				}else if(UnitStat.getHealthPointStats(opponentKingdom) <= 0){ 
+					Unit.setUnit(opponentKingdom, ((Unit.getUnit(opponentKingdom)) - 1)); // subtract 1 unit
+					System.out.println(opponentKingdom.getKingdomName() + " -> Unit Replaced.");
+					UnitStat.setHealthPointStats(opponentKingdom, UnitStat.getTotalHealthPointStats(opponentKingdom));
 					unitBattle(kingdom1, opponentKingdom); // go into
 				} else {
 					unitBattle(kingdom1, opponentKingdom); // go into
@@ -78,18 +71,14 @@ public class Battle extends KingdomAction{
 			}
 	}
 	
+	
+	
 	public static void main(String[] args){
 		//This is where unit go to battleSystem.out.println("kingdom unit Damage: " + UnitAction.attack(opponentKingdom, kingdom1));
 		//System.out.println("opponent unit Damage: " + UnitAction.attack(globalKingdoms.globalKingdom1, globalKingdoms.globalKingdom2));
 		//System.out.println("kingdom unit Damage: " + UnitAction.attack(globalKingdoms.globalKingdom2, globalKingdoms.globalKingdom1));
 		
-		hp.add(UnitStat.getHealthPointStats(globalKingdoms.globalKingdom2));
-        hp.add(UnitStat.getHealthPointStats(globalKingdoms.globalKingdom2));
-      
-        System.out.println("gk1 saved hp: " + hp.get(0));       
-        System.out.println("gk2 saved hp: " + hp.get(1));       
-        
-		microBattle(globalKingdoms.globalKingdom1, globalKingdoms.globalKingdom2);
+		//unitBattle(globalKingdoms.globalKingdom1, globalKingdoms.globalKingdom2);
 	}
 	
 }
